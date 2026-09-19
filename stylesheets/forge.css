@@ -1,0 +1,100 @@
+/* Lyricsmith: copper on warm slate, flat surfaces, monospace headings. */
+
+:root {
+  --lyricsmith-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono",
+    "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color: #1c1a17;
+  --md-primary-fg-color--light: #2b2723;
+  --md-primary-fg-color--dark: #121110;
+  --md-primary-bg-color: #f2ede7;
+  --md-primary-bg-color--light: #c9c1b8;
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color: #c87941;
+  --md-accent-fg-color--transparent: rgba(200, 121, 65, 0.1);
+  --md-accent-bg-color: #12100e;
+  --md-accent-bg-color--light: #2b2723;
+}
+
+/* The generated slate palette is blue by default; warm it to an ember hue. */
+[data-md-color-scheme="slate"] {
+  --md-hue: 28;
+  --md-typeset-a-color: #d08b52;
+}
+
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: #a25f2c;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5 {
+  font-family: var(--lyricsmith-mono);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.3rem;
+}
+
+.md-header__title .md-ellipsis,
+.md-nav__title {
+  font-family: var(--lyricsmith-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.md-typeset code,
+.md-typeset pre > code,
+.md-typeset kbd {
+  font-family: var(--lyricsmith-mono);
+}
+
+.md-header {
+  box-shadow: none;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) {
+  box-shadow: none;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) th {
+  font-family: var(--lyricsmith-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* A single flat rule rather than the default floating card. */
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 0 0 0 2px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-family: var(--lyricsmith-mono);
+  letter-spacing: 0.02em;
+}
+
+.md-search__form,
+.md-search__input {
+  border-radius: 0;
+}
+
+.md-footer {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
