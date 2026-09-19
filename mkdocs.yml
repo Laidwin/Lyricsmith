@@ -2,10 +2,9 @@ site_name: Lyricsmith
 site_description: Turn a song into timestamped lyrics, with Demucs and HeartTranscriptor.
 copyright: Released under the MIT License.
 
-# Uncomment once the repository is published, to link the site back to GitHub.
-# repo_url: https://github.com/your-account/Lyricsmith
-# repo_name: Lyricsmith
-# site_url: https://your-account.github.io/Lyricsmith/
+repo_url: https://github.com/Laidwin/Lyricsmith
+repo_name: Lyricsmith
+site_url: https://Laidwin.github.io/Lyricsmith/
 
 theme:
   name: material
