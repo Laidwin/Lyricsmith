@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.egg
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets
+.env
+
+# Generated documentation site
+site/
+.cache/
+
+# Models, cloned dependency and generated data
+models/
+heartlib/
+outputs/
+separated/
+
+# Local audio files
+inputs/
+*.flac
+*.mp3
+*.wav
+*.m4a
+*.ogg

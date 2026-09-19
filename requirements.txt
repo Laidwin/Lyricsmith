@@ -1,0 +1,27 @@
+# Deep learning core. Install torch and torchaudio with the right CUDA index, e.g.
+#   uv pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=2.4.1
+torchaudio>=2.4.1
+
+# Vocal separation
+demucs>=4.0.0
+
+# Transcription engine
+transformers>=4.44.0
+
+# Audio input, output and processing
+soundfile>=0.12.1
+librosa>=0.10.0
+scipy>=1.13.0          # EQ and high pass filters used by pre and post processing
+pyloudnorm>=0.1.1      # LUFS loudness normalization
+noisereduce>=3.0.0     # Spectral reverb reduction
+
+# Configuration
+pyyaml>=6.0
+
+# Styled logging and CLI
+rich>=13.0
+typer>=0.12.0
+
+# Model weights download
+huggingface_hub>=0.24.0

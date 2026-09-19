@@ -1,0 +1,74 @@
+site_name: Lyricsmith
+site_description: Turn a song into timestamped lyrics, with Demucs and HeartTranscriptor.
+copyright: Released under the MIT License.
+
+# Uncomment once the repository is published, to link the site back to GitHub.
+# repo_url: https://github.com/your-account/Lyricsmith
+# repo_name: Lyricsmith
+# site_url: https://your-account.github.io/Lyricsmith/
+
+theme:
+  name: material
+  language: en
+  font: false
+  icon:
+    logo: material/anvil
+  features:
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - search.highlight
+    - search.suggest
+  palette:
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+extra_css:
+  - stylesheets/forge.css
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: installation.md
+      - Command line: cli.md
+      - Library: library.md
+  - Reference:
+      - Configuration: configuration.md
+      - Processing chain: processing-chain.md
+      - Output format: output.md
+  - Internals:
+      - Architecture: architecture.md
+      - Troubleshooting: troubleshooting.md
+      - Contributing: contributing.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn
+
+plugins:
+  - search

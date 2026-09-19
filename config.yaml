@@ -1,0 +1,81 @@
+# Central configuration of the lyrics transcription pipeline.
+# Every tunable parameter lives here; nothing is hard coded in the Python code.
+
+models:
+  demucs:
+    name: "htdemucs_ft" # Fine tuned model, better on vocals with effects
+    device: "cuda" # cuda | cpu
+    shifts: 4 # More shifts means better quality and slower runs
+    overlap: 0.25 # Overlap between processed chunks
+    jobs: 0 # CPU workers (0 means auto)
+    quality_preset: "balanced" # fast | balanced | best | null. Overrides name and shifts.
+  hearttranscriptor:
+    model_path: "./models/ckpt"
+    device: "cuda"
+    lazy_load: true # Required on 8 GB of VRAM: load and unload the model on demand
+    dtype: "bf16" # bf16 | fp16 | fp32
+    chunk_length_s: 30 # Window fed to Whisper, drives VRAM use
+    batch_size: 16 # Windows processed at once, drives VRAM use
+    # Anti hallucination options, mapped to the Whisper generate_kwargs
+    condition_on_previous_text: false # Main fix against repetition loops
+    no_speech_threshold: 0.6 # Discards chunks without clear vocals
+    logprob_threshold: -1.0 # Required by the Whisper fallback when no_speech_threshold is set
+    compression_ratio_threshold: 2.4 # Detects and rejects repetitive chunks
+    temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0] # Fallback ladder when temperature 0 fails
+    beam_size: 5 # Beam search width, mapped to num_beams
+
+pipeline:
+  output_dir: "./outputs"
+  keep_stems: false # Whether to keep the Demucs stems (vocals and no_vocals)
+  target_sample_rate: 16000 # Sample rate expected by HeartTranscriptor
+  supported_formats:
+    - ".mp3"
+    - ".wav"
+    - ".flac"
+    - ".m4a"
+    - ".ogg"
+
+  # Processing chain, applied in this exact order:
+  #   preprocess -> separate -> postprocess -> transcribe -> clean -> dedup -> quality
+  # Every step can be disabled independently, through `enabled` or a CLI flag.
+
+  preprocessing: # Before Demucs, on the source audio
+    enabled: true
+    resample: true
+    resample_target_sr: 44100 # Demucs is trained on 44.1 kHz
+    remove_dc_offset: true
+    normalize_loudness: true
+    target_lufs: -14.0 # Streaming standard
+
+  postprocessing: # After Demucs, on the isolated vocals
+    enabled: true
+    reduce_reverb: true
+    reverb_aggressiveness: 0.45 # Clamped to the 0.0 to 0.6 range
+    enhance_clarity: true
+
+  cleaning: # Character artifact removal
+    enabled: true
+    remove_fullwidth: true
+    remove_repeated_chars: true
+    min_segment_words: 1 # A segment below this word count is dropped
+    custom_patterns: [] # Extra regular expressions, no code change needed
+
+  deduplication: # Repetition removal
+    enabled: true
+    consecutive_max_repeats: 2
+    consecutive_similarity: 0.85
+    ghost_block_min_size: 3
+    ghost_block_time_window: 15.0
+    ghost_block_similarity: 0.85
+
+  quality: # Scoring of the transcribed segments, always applied
+    low_confidence_threshold: 0.4 # Below this value a segment is marked as degraded
+
+  line_splitting: # Reflow of the often single line text into verses
+    enabled: true
+    max_words: 10 # Length above which a cut on a function word is allowed
+    hard_max_words: 16 # Absolute maximum length of a verse
+    min_words_to_split: 12 # Shorter lines are left untouched
+
+  report:
+    json: true # Also write song_pipeline_report.json
