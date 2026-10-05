@@ -1,4 +1,6 @@
-# Output format
+---
+title: Output format
+---
 
 For `song.mp3`, a run writes into `./outputs/song/`:
 
@@ -55,11 +57,12 @@ same name overwrite each other.
 
 `degraded_segments` holds indices into `segments`.
 
-!!! note "source_segment_index is not an index into segments"
-    Inside `artifact_reports`, `source_segment_index` points at the raw segment
-    list returned by the model, before cleaning and deduplication removed
-    anything. Use `timestamp_start` to locate the segment in the final
-    transcript.
+:::note[source_segment_index is not an index into segments]
+Inside `artifact_reports`, `source_segment_index` points at the raw segment
+list returned by the model, before cleaning and deduplication removed
+anything. Use `timestamp_start` to locate the segment in the final
+transcript.
+:::
 
 `degraded_reason` is null on a healthy segment, and otherwise one of
 `low_confidence`, `repetition` or `noise`.
@@ -75,8 +78,8 @@ Degraded segments are replaced by a marker rather than by text the model was
 not sure about.
 
 ```
-[00:00] They say, "You'll get used to it"
-[00:04] But it never goes away
+[00:00] Walking down the empty road tonight
+[00:04] Counting every streetlight on the way
 [01:23] [degraded segment: low confidence, confidence 0.31]
 
 ---

@@ -1,4 +1,6 @@
-# Processing chain
+---
+title: Processing chain
+---
 
 A run applies these steps, always in this order:
 
@@ -45,7 +47,7 @@ true, in which case they land next to the lyrics.
 Two code paths exist, chosen automatically: the convenient `demucs.api` when the
 installed build ships it, and the low level `demucs.pretrained` plus
 `demucs.apply` otherwise. See
-[Architecture](architecture.md#demucs-without-demucsapi).
+[Architecture](/architecture/#demucs-without-demucsapi).
 
 ## 3. Postprocess
 
@@ -109,7 +111,7 @@ A segment is degraded when its confidence falls below
 `low_confidence_threshold`, when it is repetitive, when it holds an abnormal
 share of unusual characters, or when it is very short with a mediocre score.
 The per segment scores are then aggregated, weighted by duration, into the
-overall grade. See [Output format](output.md#quality-grades).
+overall grade. See [Output format](/output/#quality-grades).
 
 ## 8. Linesplit
 

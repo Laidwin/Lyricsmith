@@ -1,4 +1,6 @@
-# Architecture
+---
+title: Architecture
+---
 
 ## Layers
 
@@ -121,4 +123,4 @@ steps that are pure functions are tested directly on `Segment` values. This is
 the practical payoff of the layering: `refine.py` holds the step order, so the
 order is testable in milliseconds.
 
-See [Contributing](contributing.md) for how to run and extend the suite.
+See [Contributing](/contributing/) for how to run and extend the suite.

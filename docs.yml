@@ -1,0 +1,24 @@
+title: Lyricsmith
+description: Turn a song into timestamped lyrics, with a quality grade you can trust.
+accent: "#c87941"
+site: https://laidwin.github.io
+social:
+  github: https://github.com/Laidwin/Lyricsmith
+editLink: https://github.com/Laidwin/Lyricsmith/edit/main/
+sidebar:
+  - index
+  - label: Getting started
+    items:
+      - installation
+      - cli
+      - library
+  - label: Reference
+    items:
+      - configuration
+      - processing-chain
+      - output
+  - label: Internals
+    items:
+      - architecture
+      - troubleshooting
+      - contributing

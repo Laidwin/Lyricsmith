@@ -1,4 +1,6 @@
-# Contributing
+---
+title: Contributing
+---
 
 ## Running the tests
 
@@ -78,30 +80,27 @@ Text steps follow the same shape. Taking a hypothetical punctuation fixer:
    run.
 6. Test the function directly, and add a case in `test_refine.py` for the
    enabled and disabled paths.
-7. Document it in [Processing chain](processing-chain.md) and
-   [Configuration](configuration.md).
+7. Document it in [Processing chain](/processing-chain/) and
+   [Configuration](/configuration/).
 
 Audio steps are the same, except they live in `utils/preprocess.py` and are
 called from `separator.py`, before or after the separation.
 
 ## Documentation
 
-The site is built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
+The site is built with [Kiln](https://github.com/Laidwin/kiln), configured by
+`docs.yml` at the repository root. Kiln runs in Docker, so nothing is added to
+the Python environment.
 
 ```bash
-uv pip install -e ".[docs]"
-mkdocs serve          # Live preview on http://127.0.0.1:8000
-mkdocs build --strict # Fails on broken internal links
+docker run --rm -p 4321:4321 -v "$PWD":/project ghcr.io/laidwin/kiln serve   # live reload on http://localhost:4321
+docker run --rm -v "$PWD":/project ghcr.io/laidwin/kiln build                # static site in site/, git ignored
 ```
 
-Pages live in `docs/`, and the navigation is declared in `mkdocs.yml`. A new
-page has to be added to the `nav` section, otherwise `--strict` rejects the
-build.
-
-The look is not the stock Material one. The palette is declared as `custom` in
-`mkdocs.yml` and defined in `docs/stylesheets/forge.css`: copper accents on a
-warm slate background, monospace headings, flat surfaces and no web fonts, since
-`font: false` keeps the system stack. Change the colors in that one file.
+Pages live in `docs/`, and the navigation is declared in the `sidebar` list of
+`docs.yml`. Link between pages with absolute paths such as
+`[Output format](/output/)`: Kiln adds the base path of the published site.
+The copper accent is the `accent` key of `docs.yml`.
 
 Keep the configuration reference in sync with the dataclasses in
 `lyricsmith/config.py`. It is the one page that silently goes stale, since

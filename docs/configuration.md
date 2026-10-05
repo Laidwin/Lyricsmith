@@ -1,4 +1,6 @@
-# Configuration
+---
+title: Configuration
+---
 
 Every tunable parameter lives in `config.yaml` at the project root. Nothing is
 hard coded in the Python code, and no setting is read from anywhere else.
@@ -34,7 +36,7 @@ directory holding `config.yaml`, never against the current working directory.
 
 ### `models.demucs`
 
-Vocal separation. See the [presets](cli.md#demucs-quality-presets), which
+Vocal separation. See the [presets](/cli/#demucs-quality-presets), which
 override `name` and `shifts` when set.
 
 | Key | Type | Default | Notes |
@@ -67,11 +69,12 @@ generation call entirely and the model default applies.
 | `temperature` | `float` or list | `null` | A list is a fallback ladder, tried in order |
 | `beam_size` | `int` or null | `null` | Beam search width, mapped to `num_beams` |
 
-!!! warning "logprob_threshold travels with no_speech_threshold"
-    The Whisper fallback in `transformers` reads `logprobs` inside its
-    no-speech branch, and that value only exists when `logprob_threshold` is
-    set. Setting `no_speech_threshold` alone raises `UnboundLocalError` deep
-    inside the library. The shipped `config.yaml` sets both.
+:::caution[logprob_threshold travels with no_speech_threshold]
+The Whisper fallback in `transformers` reads `logprobs` inside its
+no-speech branch, and that value only exists when `logprob_threshold` is
+set. Setting `no_speech_threshold` alone raises `UnboundLocalError` deep
+inside the library. The shipped `config.yaml` sets both.
+:::
 
 The openai-whisper option `best_of` has no equivalent in the `transformers`
 generation API and is deliberately unsupported.
@@ -88,7 +91,7 @@ generation API and is deliberately unsupported.
 ### `pipeline.preprocessing`
 
 Applied to the source audio, before Demucs. See
-[Processing chain](processing-chain.md#1-preprocess).
+[Processing chain](/processing-chain/#1-preprocess).
 
 | Key | Type | Default |
 | --- | --- | --- |
@@ -171,4 +174,4 @@ models:
 ```
 
 Falling back to `device: cpu` on either model always works and is the last
-resort. See [Troubleshooting](troubleshooting.md).
+resort. See [Troubleshooting](/troubleshooting/).

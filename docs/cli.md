@@ -1,4 +1,6 @@
-# Command line
+---
+title: Command line
+---
 
 Run Lyricsmith from a clone with `python main.py ...`, or install the project
 and use the `lyricsmith` command. Both run the same application, defined in
@@ -84,7 +86,7 @@ python main.py batch ./my_songs/
 
 The batch runs in two passes, separating everything before transcribing
 anything, so each model is loaded once for the whole set. See
-[Architecture](architecture.md#two-pass-batch-processing) for why. Files that
+[Architecture](/architecture/#two-pass-batch-processing) for why. Files that
 fail are logged and skipped, and the batch continues.
 
 ```

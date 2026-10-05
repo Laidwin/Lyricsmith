@@ -26,9 +26,6 @@ dev = [
     "pytest>=8.0",
     "numpy>=1.24",
 ]
-docs = [
-    "mkdocs-material>=9.5",
-]
 
 [project.scripts]
 lyricsmith = "lyricsmith.cli:app"

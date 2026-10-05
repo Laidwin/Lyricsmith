@@ -1,4 +1,6 @@
-# Installation
+---
+title: Installation
+---
 
 ## Requirements
 
@@ -30,10 +32,11 @@ uv pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu1
 uv pip install -r requirements.txt
 ```
 
-!!! warning "Install PyTorch first"
-    Installing `requirements.txt` before PyTorch pulls the default CPU build
-    from PyPI, and the pipeline then runs on CPU whatever `config.yaml` says.
-    Install `torch` and `torchaudio` from the CUDA index first.
+:::caution[Install PyTorch first]
+Installing `requirements.txt` before PyTorch pulls the default CPU build
+from PyPI, and the pipeline then runs on CPU whatever `config.yaml` says.
+Install `torch` and `torchaudio` from the CUDA index first.
+:::
 
 ## Downloading the models
 

@@ -1,4 +1,6 @@
-# Library
+---
+title: Library
+---
 
 Lyricsmith is usable as a library. The orchestrator renders nothing and writes
 only to the configured output directory, so it fits inside a script, a notebook

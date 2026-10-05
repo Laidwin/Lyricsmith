@@ -1,4 +1,6 @@
-# Troubleshooting
+---
+title: Troubleshooting
+---
 
 ## CUDA out of memory
 
@@ -39,7 +41,7 @@ Configuration error: Unknown key(s) in section 'pipeline.cleaning': enabledd.
 ```
 
 The key does not exist. The message lists the valid keys for that section; the
-full list is in [Configuration](configuration.md#full-reference). This is
+full list is in [Configuration](/configuration/#full-reference). This is
 deliberate: a silently ignored typo used to mean the setting you thought you
 changed never applied.
 
@@ -86,7 +88,7 @@ lower `reverb_aggressiveness`, or disable the post processing with
 
 `python main.py check-env` reports `CUDA available: no`. The usual cause is a
 CPU build of PyTorch, installed by `requirements.txt` before the CUDA build. See
-[Installation](installation.md#setting-up-the-environment). Confirm with:
+[Installation](/installation/#setting-up-the-environment). Confirm with:
 
 ```bash
 python -c "import torch; print(torch.__version__, torch.version.cuda)"
