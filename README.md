@@ -10,6 +10,7 @@ so you know exactly how much you can trust it.
 [![Documentation](https://img.shields.io/badge/docs-laidwin.github.io%2FLyricsmith-blue)](https://laidwin.github.io/Lyricsmith/)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Docs built with Kiln](https://img.shields.io/badge/docs%20built%20with-Kiln-f76b15)](https://github.com/Laidwin/kiln)
 
 [**Documentation**](https://laidwin.github.io/Lyricsmith/) · [**Quick start**](#quick-start)
 
